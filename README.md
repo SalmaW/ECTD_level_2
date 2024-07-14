@@ -11,7 +11,7 @@ You can see notes in each of these mini-projects.
 Here you can see the tasks and short description:
 | Task  | Description |
 | ------------- | ------------- |
-| [Task 1]() | Content Cell  |
+| [Task 1](lib/day001) | Audio Player, that has a next and previous buttons, a slider for the audio, and play/pause button. and it displays the name of the current audio and the time stamp  |
 | [Task 2]() | Content Cell  |
 | [Task 3]() | Content Cell  |
 | [Task 4]() | Content Cell  |
