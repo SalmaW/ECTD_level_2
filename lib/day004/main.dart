@@ -7,9 +7,12 @@ void main() {
 }
 
 class CarouselSliderApp extends StatelessWidget {
+  const CarouselSliderApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Carousel Slider Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
