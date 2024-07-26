@@ -13,7 +13,7 @@ class SongW extends StatefulWidget {
 class _SongWState extends State<SongW> {
   final assetsAudioPlayer = AssetsAudioPlayer();
   int currentPosition = 0;
-  late bool triggered;
+  late bool isTriggered;
 
   @override
   void initState() {
@@ -22,7 +22,7 @@ class _SongWState extends State<SongW> {
       widget.audio,
       autoStart: false,
     );
-    triggered = false;
+    isTriggered = false;
     super.initState();
   }
 
@@ -36,6 +36,10 @@ class _SongWState extends State<SongW> {
     assetsAudioPlayer.currentPosition.listen((event) {
       currentPosition = event.inSeconds;
     });
+    assetsAudioPlayer.isPlaying.listen((triggered) {
+      isTriggered = triggered;
+    });
+
     setState(() {});
   }
 
@@ -60,7 +64,7 @@ class _SongWState extends State<SongW> {
             return const SizedBox.shrink();
           }
           return Text(
-            convertSeconds(triggered
+            convertSeconds(isTriggered
                 ? currentPosition
                 : snapshots.data?.duration.inSeconds ?? 0),
             style: const TextStyle(fontSize: 24),
@@ -70,12 +74,11 @@ class _SongWState extends State<SongW> {
       title: Text(widget.audio.metas.title ?? "NO title"),
       subtitle: Text(widget.audio.metas.artist ?? "NO name"),
       onTap: () async {
-        triggered = true;
         await assetsAudioPlayer.playOrPause();
-        if (assetsAudioPlayer.stopped) {
-          triggered = !assetsAudioPlayer.stopped;
-          setState(() {});
+        if (isTriggered) {
+          isTriggered = !assetsAudioPlayer.stopped;
         }
+        setState(() {});
       },
     );
   }
