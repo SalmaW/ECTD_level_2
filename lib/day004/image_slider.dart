@@ -30,6 +30,12 @@ class _ImageSliderState extends State<ImageSlider> {
   }
 
   @override
+  void dispose() {
+    _carouselController.stopAutoPlay();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[

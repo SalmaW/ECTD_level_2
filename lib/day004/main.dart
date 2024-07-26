@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../day004/image_slider.dart';
 
 void main() {
-  runApp(CarouselSliderApp());
+  runApp(const CarouselSliderApp());
 }
 
 class CarouselSliderApp extends StatelessWidget {
