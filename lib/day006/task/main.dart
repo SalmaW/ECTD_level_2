@@ -1,6 +1,5 @@
+import 'package:ectd2/day006/task/pages/on_boarding_screens.dart';
 import 'package:flutter/material.dart';
-
-import 'day006/task/pages/on_boarding_screens.dart';
 
 void main() {
   runApp(MyApp());

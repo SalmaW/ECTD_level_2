@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'day006/task/pages/on_boarding_screens.dart';
+import 'pages/home.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,8 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      title: 'Onboarding Demo',
-      home: const OnboardingScreen(),
+      home: const Home(),
     );
   }
 }
