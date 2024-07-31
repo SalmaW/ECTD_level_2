@@ -64,44 +64,99 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         actions: [
           TextButton(
             onPressed: _skip,
-            child: const Text('Skip'),
+            child: Text(
+                _buildPages().length - 1 == _currentPage ? 'Log IN' : 'Skip'),
           ),
         ],
       ),
       body: Column(
         children: [
           Expanded(
+            flex: 4,
             child: PageView(
               controller: _pageController,
               onPageChanged: _onPageChanged,
               children: _buildPages(),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children:
-                List.generate(_buildPages().length, (index) => buildDot(index)),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: _currentPage > 0
-                      ? () {
-                          _pageController.previousPage(
-                              duration: const Duration(milliseconds: 400),
-                              curve: Curves.easeInOut);
-                        }
-                      : null,
-                ),
-                IconButton(
-                  icon: const Icon(Icons.arrow_forward),
-                  onPressed: _currentPage < 3 ? _nextPage : null,
-                ),
-              ],
+          Expanded(
+            child: Column(
+              children: _buildPages().length - 1 == _currentPage
+                  ? [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            fixedSize: const Size(300, 50),
+                            backgroundColor: const Color(0xffF7BA34),
+                            shadowColor: Colors.transparent,
+                          ),
+                          onPressed: () {
+                            // Handle login or navigate to login page
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => LoginScreen()));
+                          },
+                          child: const Text(
+                            'Log In',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]
+                  : [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: List.generate(
+                              _buildPages().length, (index) => buildDot(index)),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: const CircleBorder(),
+                                backgroundColor: const Color(0xffF7BA34),
+                                shadowColor: Colors.transparent,
+                              ),
+                              onPressed: _currentPage > 0
+                                  ? () {
+                                      _pageController.previousPage(
+                                          duration:
+                                              const Duration(milliseconds: 400),
+                                          curve: Curves.easeInOut);
+                                    }
+                                  : null,
+                              child: const Icon(
+                                Icons.arrow_back,
+                                color: Colors.white,
+                              ),
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: const CircleBorder(),
+                                backgroundColor: const Color(0xffF7BA34),
+                                shadowColor: Colors.transparent,
+                              ),
+                              onPressed: _currentPage < 3 ? _nextPage : null,
+                              child: const Icon(
+                                Icons.arrow_forward,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
             ),
           ),
         ],
@@ -129,12 +184,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           );
           double zoom = 1.0 + (selectedness * 0.3);
           return Container(
-            height: 10 * zoom,
-            width: 10 * zoom,
-            margin: const EdgeInsets.symmetric(horizontal: 4),
+            height: 3 * zoom,
+            width: 22 * zoom,
+            margin: const EdgeInsets.symmetric(horizontal: 0.5),
             decoration: BoxDecoration(
               color: _currentPage == index ? Colors.black : Colors.grey,
-              shape: BoxShape.circle,
+              shape: BoxShape.rectangle,
             ),
           );
         },
