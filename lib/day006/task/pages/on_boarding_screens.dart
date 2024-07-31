@@ -48,12 +48,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _nextPage() {
-    if (_currentPage < 3) {
-      _pageController.animateToPage(_currentPage + 1,
-          duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
-    } else {
-      // Navigate to home screen or main app
-    }
+    _pageController.animateToPage(_currentPage + 1,
+        duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
   }
 
   void _skip() {
@@ -83,7 +79,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(4, (index) => buildDot(index)),
+            children:
+                List.generate(_buildPages().length, (index) => buildDot(index)),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -102,7 +99,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 IconButton(
                   icon: const Icon(Icons.arrow_forward),
-                  onPressed: _nextPage,
+                  onPressed: _currentPage < 3 ? _nextPage : null,
                 ),
               ],
             ),
