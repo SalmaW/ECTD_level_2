@@ -29,7 +29,7 @@ and play/pause button. and it displays the name of the current audio and the tim
 | [Task 5](lib/day005) | practicing jsonDecoding and jsonEncoding with ValueListenableBuilder
 feature |
 | [Task 6](lib/day006/task) | onBoarding screens |
-| [Task 7]() | Content Cell |
+| [Task 7](lib/day007) | BloC |
 | [Task 8]() | Content Cell |
 | [Task 9]() | Content Cell |
 | [Task 10]() | Content Cell |

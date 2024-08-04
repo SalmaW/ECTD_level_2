@@ -4,7 +4,7 @@ import 'package:ectd2/day007/repository/emp_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'day007/pages/home.dart';
+import '../day007/pages/home.dart';
 
 void main() {
   runApp(
