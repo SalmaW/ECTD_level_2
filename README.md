@@ -30,7 +30,7 @@ and play/pause button. and it displays the name of the current audio and the tim
 feature |
 | [Task 6](lib/day006/task) | onBoarding screens |
 | [Task 7](lib/day007) | BloC |
-| [Task 8]() | Content Cell |
+| [Task 8](lib/day008) | BLoC + API |
 | [Task 9]() | Content Cell |
 | [Task 10]() | Content Cell |
 | [Task 11]() | Content Cell |
