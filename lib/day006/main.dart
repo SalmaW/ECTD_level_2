@@ -1,15 +1,14 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:ectd2/day006/utils/color_utility.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'pages/home.dart';
+import '../day006/pages/onboarding_page.dart';
+import '../day006/utils/color_utility.dart';
 
 void main() {
-  runApp(DevicePreview(
-    enabled: !kReleaseMode,
-    builder: (BuildContext context) => const MyApp(),
-  ));
+  // runApp(DevicePreview(
+  //   enabled: !kReleaseMode,
+  //   builder: (BuildContext context) => const MyApp(),
+  // ));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -18,9 +17,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      useInheritedMediaQuery: true,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
+      // useInheritedMediaQuery: true,
+      // locale: DevicePreview.locale(context),
+      // builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: "PlusJakartaSans",
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const Home(),
+      home: const OnBoardingPage(),
     );
   }
 }
