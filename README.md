@@ -29,7 +29,7 @@ Here you can see the tasks and short description:
 | [Task 6](lib/day006/task) | onBoarding screens |
 | [Task 7](lib/day007/task) | BloC |
 | [Task 8](lib/day008) | BLoC + API |
-| [Task 9](lib/day009) | the same project we did in lecture BUT using *provider state management* |
+| [Task 9](lib/day009/task) | the same project we did in lecture BUT using *provider state management* |
 | [Task 10]() | Content Cell |
 | [Task 11]() | Content Cell |
 | [Task 12]() | Content Cell |
