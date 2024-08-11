@@ -1,54 +1,45 @@
-import 'package:ectd2/day007/bloc/employee_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../widgets/data_widget.dart';
 
 class Home extends StatefulWidget {
+  static String id = "HomePage";
+
   const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
 }
 
+var counterNotifier = ValueNotifier(0);
+
 class _HomeState extends State<Home> {
   @override
-  void initState() {
-    context.read<EmployeeBloc>().add(LoadEmployeeEvent());
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    print("<<<<<<<<<< home build trigger");
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {});
+        },
+      ),
       appBar: AppBar(
-        title: const Text('Home - Bloc'),
+        title: const Text('Home'),
       ),
       body: Center(
-        child: BlocBuilder<EmployeeBloc, EmployeeState>(
-          builder: (context, state) {
-            if (state is EmployeeLoadingState) {
-              return const Center(child: CircularProgressIndicator());
-            }
-
-            if (state is EmployeeLoadedState) {
-              return ListView.builder(
-                itemCount: state.employee.length,
-                itemBuilder: (context, index) => Card(
-                  child: ListTile(
-                    title: Text(
-                        state.employee[index].name?.first ?? "No first name"),
-                    subtitle: Text(
-                        state.employee[index].name?.last ?? "No last name"),
-                  ),
-                ),
-              );
-            }
-
-            if (state is EmployeeErrorState) {
-              return Center(child: Text("EmployeeErrorState ${state.error}"));
-            }
-
-            return Text("block $state");
-          },
+        child: DataWidget(
+          data: [
+            'Item 1',
+            'Item 2',
+            'Item 3',
+            'Item 4',
+            'Item 5',
+            'Item 6',
+            'Item 7',
+            'Item 8',
+            'Item 9',
+            'Item 10',
+          ],
         ),
       ),
     );

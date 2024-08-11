@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:ectd2/day007/model/employee.dart';
-import 'package:ectd2/day007/repository/emp_repo.dart';
+import 'package:ectd2/day007/task/model/employee.dart';
+import 'package:ectd2/day007/task/repository/emp_repo.dart';
 import 'package:meta/meta.dart';
 
 part 'employee_event.dart';

@@ -27,7 +27,7 @@ Here you can see the tasks and short description:
 | [Task 4](lib/day004) | 1 problem solution and carousel slider with dots indicator|
 | [Task 5](lib/day005) | practicing jsonDecoding and jsonEncoding with ValueListenableBuilder feature |
 | [Task 6](lib/day006/task) | onBoarding screens |
-| [Task 7](lib/day007) | BloC |
+| [Task 7](lib/day007/task) | BloC |
 | [Task 8](lib/day008) | BLoC + API |
 | [Task 9]() | Content Cell |
 | [Task 10]() | Content Cell |

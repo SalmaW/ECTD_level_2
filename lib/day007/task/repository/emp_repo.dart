@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:ectd2/day007/model/employee.dart';
+import 'package:ectd2/day007/task/model/employee.dart';
 import 'package:flutter/services.dart';
 
 class EmpRepo {
