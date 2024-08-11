@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'on_boarding_page.dart';
+import '../widgets/on_boarding_items.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -17,23 +17,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   List<Widget> _buildPages() {
     return const [
-      OnboardingPage(
+      OnboardingItems(
         image: "assets/images/certification.png",
         // Add your asset paths
         title: 'Certification and Badges',
         description: 'Earn a certificate after completion of every course',
       ),
-      OnboardingPage(
+      OnboardingItems(
         image: 'assets/images/progress_tracking.png',
         title: 'Progress Tracking',
         description: 'Check your Progress of every course',
       ),
-      OnboardingPage(
+      OnboardingItems(
         image: 'assets/images/offline_access.png',
         title: 'Offline Access',
         description: 'Make your course available offline',
       ),
-      OnboardingPage(
+      OnboardingItems(
         image: 'assets/images/course_catalog.png',
         title: 'Course Catalog',
         description: 'View in which courses you are enrolled',
