@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../pages/about_me.dart';
+import '../../../utils/app_screenutil.dart';
 import '../../../widgets/app_bar_widget.dart';
 import '../../../widgets/app_drawer_widget.dart';
 
@@ -13,57 +15,26 @@ class DesktopWidget extends StatefulWidget {
 class _DesktopWidgetState extends State<DesktopWidget> {
   int selectedIndex = 1;
   Map<int, Widget> indexWidgetMap = {
-    1: Wrap(
-      spacing: 10,
-      runSpacing: 10,
-      children: List.generate(
-          25,
-          (index) => SizedBox(
-                height: 150,
-                width: 150,
-                child: PhysicalModel(
-                  borderRadius: BorderRadius.circular(15),
-                  elevation: 5,
-                  color: Colors.white,
-                  shadowColor: Colors.black12,
-                  child: const Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('5'),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. U',
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              )),
-    ),
-    2: const Text('Settings'),
-    3: const Text('Employees'),
-    4: const Text('Finances')
+    1: const AboutMe(),
+    2: const Text('Location'),
+    3: const Text('Phone Number'),
   };
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
+        // app drawer
         Container(
-          width: 300,
-          decoration: BoxDecoration(color: Colors.white, boxShadow: [
-            BoxShadow(
-              color: Colors.black12.withOpacity(0.3),
-              spreadRadius: 3,
-              blurRadius: 7,
-              offset: const Offset(3, 0), // changes position of shadow
-            )
-          ]),
+          width: AppScreenUtil.appDrawerW,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              boxShadowWidget(
+                customOffSet: const Offset(3, 0),
+              ),
+            ],
+          ),
           child: AppDrawerWidget(
               selectedIndex: selectedIndex,
               onClicked: (index) {
@@ -76,26 +47,23 @@ class _DesktopWidgetState extends State<DesktopWidget> {
             flex: 3,
             child: Column(
               children: [
+                //appBar
                 Container(
-                    height: 100,
+                    // height: 30,
                     decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12.withOpacity(0.3),
-                        spreadRadius: 3,
-                        blurRadius: 7,
-                        offset:
-                            const Offset(13, 0), // changes position of shadow
-                      )
+                      boxShadowWidget(customOffSet: const Offset(13, 0)),
                     ]),
                     child: const AppBarWidget()),
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Container(
-                      constraints: BoxConstraints(
-                        maxWidth: MediaQuery.sizeOf(context).width / 1.5,
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Container(
+                        constraints: BoxConstraints(
+                          maxWidth: MediaQuery.sizeOf(context).width / 1.5,
+                        ),
+                        child: indexWidgetMap[selectedIndex],
                       ),
-                      child: indexWidgetMap[selectedIndex],
                     ),
                   ),
                 ),
@@ -104,4 +72,11 @@ class _DesktopWidgetState extends State<DesktopWidget> {
       ],
     );
   }
+
+  BoxShadow boxShadowWidget({required Offset customOffSet}) => BoxShadow(
+        color: Colors.black12.withOpacity(0.3),
+        spreadRadius: 3,
+        blurRadius: 7,
+        offset: customOffSet, // changes position of shadow
+      );
 }
