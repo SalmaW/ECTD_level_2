@@ -1,15 +1,11 @@
-// import 'package:ectd2/day009/bloc/comment/comment_bloc.dart';
-import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
+import 'dart:ui';
 
-// import 'day009/bloc/post/posts_bloc.dart';
-// import 'day007/pages/onboarding_page.dart';
-// import 'day007/pages/splash_page.dart';
-// import 'day007/services/pref_services.dart';
-// import 'day007/utils/color_utility.dart';
-import 'day009/task/pages/home.dart';
-import 'day009/task/provider/posts_provider.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'day010/task/pages/home/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,21 +16,47 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => PostsProvider()),
-      ],
-      child: MaterialApp(
-        title: 'Flutter Provider Example',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const Home(),
-      ),
-    );
-  }
+    var appMediaQueryW = MediaQuery.sizeOf(context).width;
+    var appMediaQueryH = MediaQuery.sizeOf(context).height;
+    if (kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
+      print('>>>>>> uesing web');
+    }
 
-//3:30:00
+    if (defaultTargetPlatform == TargetPlatform.android ||
+        defaultTargetPlatform == TargetPlatform.iOS) {
+      print('>>>>>> uesing mobile');
+    }
+
+    if (defaultTargetPlatform == TargetPlatform.linux) {
+      print('>>>>>> uesing linux');
+    }
+    return ScreenUtilInit(
+        // Set the design size based on your design dimensions (width, height)
+        designSize: Size(appMediaQueryW, appMediaQueryH),
+        // Adapts text size across different devices
+        minTextAdapt: true,
+        builder: (context, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            scrollBehavior: AppScrollBehaviour(),
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              fontFamily: GoogleFonts.acme().fontFamily,
+              useMaterial3: true,
+            ),
+            home: const MyHomePage(),
+          );
+        });
+  }
+}
+
+class AppScrollBehaviour extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
 }
 
 // void main() {
