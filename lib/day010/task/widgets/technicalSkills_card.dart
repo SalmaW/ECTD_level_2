@@ -25,20 +25,25 @@ class TechnicalSkillsCard extends StatelessWidget {
           children: skills.map((item) {
             String title = item.keys.first;
             String data = item.values.first;
-            return Row(
+            return Column(
               children: [
-                Text(title,
-                    style: const TextStyle(
-                        fontSize: 18.0, fontWeight: FontWeight.bold)),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Text(
-                    data, maxLines: null,
-                    // Allow the text to wrap fully
-                    overflow: TextOverflow.visible,
-                    style: const TextStyle(fontSize: 18.0),
-                  ),
+                Row(
+                  children: [
+                    Text(title,
+                        style: const TextStyle(
+                            fontSize: 18.0, fontWeight: FontWeight.bold)),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        data, maxLines: null,
+                        // Allow the text to wrap fully
+                        overflow: TextOverflow.visible,
+                        style: const TextStyle(fontSize: 18.0),
+                      ),
+                    ),
+                  ],
                 ),
+                const SizedBox(height: 16),
               ],
             );
           }).toList(),
