@@ -31,8 +31,8 @@ Here you can see the tasks and short description:
 | [Task 8](lib/day008/task) | BLoC + API |
 | [Task 9](lib/day009/task) | the same project we did in lecture BUT using *provider state management* |
 | [Task 10](lib/day010/task) | responsive portfolio |
-| [Task 11]() | Content Cell |
-| [Task 12]() | Content Cell |
+| [Task 11](lib/day011/task) | Content Cell |
+| [Task 12](lib/day012/task) | Content Cell |
 | [Task 13]() | Content Cell |
 | [Task 14]() | Content Cell |
 | [Task 15]() | Content Cell |
