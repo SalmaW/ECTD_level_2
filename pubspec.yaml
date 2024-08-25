@@ -48,6 +48,8 @@ dependencies:
   flutter_screenutil: ^5.9.3
   google_fonts: ^6.2.1
   url_launcher: ^6.3.0
+  flutter_any_logo: ^1.1.1
+  material_symbols_icons: ^4.2784.0
 
 dev_dependencies:
   flutter_test:
